@@ -20,6 +20,13 @@ class ItemsViewController: UITableViewController {
         let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
         tableView.contentInset = insets
         tableView.scrollIndicatorInsets = insets
+        
+        // set background image of table view
+        let backgroundImageView = UIImageView(image: UIImage(named: "DigitalJavelina_logos_final_Page_2"))
+        backgroundImageView.contentMode = .ScaleAspectFit
+        tableView.backgroundView = backgroundImageView
+        tableView.addSubview(backgroundImageView)
+        
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -31,17 +38,26 @@ class ItemsViewController: UITableViewController {
         // get a new or recycled cell
         let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath)
         
-        // set the text on the cell with the description of the item that is at the nth index of items, where n = row this cell will appear in on the tableView
+        // set transparency of cell to see background view
+        cell.backgroundColor = UIColor.clearColor()
         
         
         // add constant row
         if indexPath.row == itemStore.allItems.count {
             cell.textLabel?.text = "No more items!"
             cell.detailTextLabel?.text = ""
+            tableView.rowHeight = 44.0
+            cell.textLabel?.font.fontWithSize(16.0)
+            cell.detailTextLabel?.font.fontWithSize(16.0)
         } else {
             let item = itemStore.allItems[indexPath.row]
             cell.textLabel?.text = item.name
             cell.detailTextLabel?.text = "$\(item.valueInDollars)"
+            tableView.rowHeight = 60.0
+            let textLabelFont = cell.textLabel?.font
+            let detailTextLabelFont = cell.detailTextLabel?.font
+            cell.textLabel?.font = textLabelFont?.fontWithSize(20.0)
+            cell.detailTextLabel?.font = detailTextLabelFont?.fontWithSize(20.0)
         }
         
         return cell
