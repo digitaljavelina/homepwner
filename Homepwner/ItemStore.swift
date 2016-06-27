@@ -37,8 +37,13 @@ class ItemStore {
         // remove item from array
         allItems.removeAtIndex(fromIndex)
         
-        // insert item in array at new location
+        // insert item in array at new location - only if not below "No more items!"
+        if toIndex > allItems.count {
+            allItems.insert(movedItem, atIndex: fromIndex)
+        } else {
+        
         allItems.insert(movedItem, atIndex: toIndex)
+        }
     }
     
 }

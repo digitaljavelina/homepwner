@@ -53,7 +53,7 @@ class ItemsViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemStore.allItems.count
+        return itemStore.allItems.count + 1
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -61,18 +61,32 @@ class ItemsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath)
         
         // set the text on the cell with the description of the item that is at the nth index of items, where n = row this cell will appear in on the tableView
-        let item = itemStore.allItems[indexPath.row]
-        
-        cell.textLabel?.text = item.name
-        cell.detailTextLabel?.text = "$\(item.valueInDollars)"
+        // add constant row
+        if indexPath.row == itemStore.allItems.count {
+            cell.textLabel?.text = "No more items!"
+            cell.detailTextLabel?.text = ""
+        } else {
+            let item = itemStore.allItems[indexPath.row]
+            cell.textLabel?.text = item.name
+            cell.detailTextLabel?.text = "$\(item.valueInDollars)"
+        }
         
         return cell
+
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         // if the tableView is asking to commit a delete command...
         if editingStyle == .Delete {
-            let item = itemStore.allItems[indexPath.row]
+            if indexPath.row == itemStore.allItems.count {
+                setEditing(false, animated: false)
+                let alert = UIAlertController(title: "Sorry", message: "This row cannot be deleted", preferredStyle: .Alert)
+                let OK = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                alert.addAction(OK)
+                presentViewController(alert, animated: true, completion: nil)
+                return
+            } else {
+                let item = itemStore.allItems[indexPath.row]
             
             // insert action sheet to confirm item deletion
             let title = "Delete \(item.name)?"
@@ -94,6 +108,7 @@ class ItemsViewController: UITableViewController {
             
             // present the alert controller modally
             presentViewController(ac, animated: true, completion: nil)
+            }
         }
     }
     
@@ -101,5 +116,23 @@ class ItemsViewController: UITableViewController {
         // update the model
         itemStore.moveItemAtIndex(sourceIndexPath.row, toIndex: destinationIndexPath.row)
     }
-
+    
+    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if indexPath.row == itemStore.allItems.count {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    // ensure that "No more items!" is always the last row
+    override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
+        let storeCount = itemStore.allItems.count
+        if proposedDestinationIndexPath.row < storeCount {
+            return proposedDestinationIndexPath
+        } else {
+            return NSIndexPath(forRow: storeCount - 1, inSection: 0)
+        }
+    }
+    
 }
