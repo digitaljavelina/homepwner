@@ -12,6 +12,36 @@ class ItemsViewController: UITableViewController {
     
     var itemStore: ItemStore!
     
+    @IBAction func addNewItem(sender: AnyObject) {
+        // create a new item and add it to the store
+        let newItem = itemStore.createItem()
+        
+        // determine where that item is in the array
+        if let index = itemStore.allItems.indexOf(newItem) {
+            let indexPath = NSIndexPath(forRow: index, inSection: 0)
+        
+        // insert this new row into the table
+        tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
+    }
+    
+    @IBAction func toggleEditingMode(sender: AnyObject) {
+        // If you are currently in editing mode...
+        if editing {
+            // Change text of button to inform user of state
+            sender.setTitle("Edit", forState: .Normal)
+            
+            // Turn off editing mode
+            setEditing(false, animated: true)
+        } else {
+            // change text of button to inform user of state
+            sender.setTitle("Done", forState: .Normal)
+            
+            // Turn on editing mode
+            setEditing(true, animated: true)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,6 +67,23 @@ class ItemsViewController: UITableViewController {
         cell.detailTextLabel?.text = "$\(item.valueInDollars)"
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        // if the tableView is asking to commit a delete command...
+        if editingStyle == .Delete {
+            let item = itemStore.allItems[indexPath.row]
+            // remove the item from the store
+            itemStore.removeItem(item)
+            
+            // also remove that row from the tableView with animation
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
+    }
+    
+    override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        // update the model
+        itemStore.moveItemAtIndex(sourceIndexPath.row, toIndex: destinationIndexPath.row)
     }
 
 }
