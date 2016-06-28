@@ -52,21 +52,21 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hed-ni-7ii">
-                                            <rect key="frame" x="8" y="0.0" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <rect key="frame" x="8" y="0.0" width="40" height="20"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2m-jN-ZU1">
-                                            <rect key="frame" x="8" y="39" width="36" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <rect key="frame" x="8" y="38" width="29" height="18"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                             <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXK-eu-xXr">
-                                            <rect key="frame" x="550" y="21" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <rect key="frame" x="552" y="22" width="40" height="20"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -76,6 +76,7 @@
                                         <constraint firstItem="z2m-jN-ZU1" firstAttribute="leading" secondItem="Hed-ni-7ii" secondAttribute="leading" id="hag-k9-XPl"/>
                                         <constraint firstItem="z2m-jN-ZU1" firstAttribute="bottom" secondItem="3S4-KO-FYj" secondAttribute="bottomMargin" id="kE7-PP-Ru6"/>
                                         <constraint firstItem="Hed-ni-7ii" firstAttribute="top" secondItem="3S4-KO-FYj" secondAttribute="topMargin" constant="-8" id="thr-pg-VMA"/>
+                                        <constraint firstItem="z2m-jN-ZU1" firstAttribute="top" secondItem="Hed-ni-7ii" secondAttribute="bottom" constant="18" id="u4a-Jb-D0e"/>
                                         <constraint firstItem="Hed-ni-7ii" firstAttribute="leading" secondItem="3S4-KO-FYj" secondAttribute="leadingMargin" id="yUK-eW-fqm"/>
                                     </constraints>
                                 </tableViewCellContentView>

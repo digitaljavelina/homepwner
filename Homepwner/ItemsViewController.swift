@@ -51,8 +51,9 @@ class ItemsViewController: UITableViewController {
         tableView.contentInset = insets
         tableView.scrollIndicatorInsets = insets
         
-        // set height of the custom ItemCell
-        tableView.rowHeight = 65
+        // set height of the custom ItemCell (dynamically)
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 65
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,6 +63,9 @@ class ItemsViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // get a new or recycled cell
         let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
+        
+        // update the labels for the new preferred text size
+        cell.updateLabels()
         
         // set the text on the cell with the description of the item that is at the nth index of items, where n = row this cell will appear in on the tableView
         let item = itemStore.allItems[indexPath.row]
