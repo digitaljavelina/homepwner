@@ -25,31 +25,8 @@ class ItemsViewController: UITableViewController {
         }
     }
     
-    @IBAction func toggleEditingMode(sender: AnyObject) {
-        // If you are currently in editing mode...
-        if editing {
-            // Change text of button to inform user of state
-            sender.setTitle("Edit", forState: .Normal)
-            
-            // Turn off editing mode
-            setEditing(false, animated: true)
-        } else {
-            // change text of button to inform user of state
-            sender.setTitle("Done", forState: .Normal)
-            
-            // Turn on editing mode
-            setEditing(true, animated: true)
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // get the height of the status bar and create an inset so that the table view does not overlap it
-        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
-        let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
-        tableView.contentInset = insets
-        tableView.scrollIndicatorInsets = insets
         
         // set height of the custom ItemCell (dynamically)
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -129,6 +106,13 @@ class ItemsViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         tableView.reloadData()
+    }
+    
+    // create edit button for left bar button item (no way to do this in IB)
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        navigationItem.leftBarButtonItem = editButtonItem()
     }
 
 }
