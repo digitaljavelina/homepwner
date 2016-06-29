@@ -123,5 +123,12 @@ class ItemsViewController: UITableViewController {
             }
         }
     }
+    
+    // call this method when DetailViewController is popped off the stack and topViewController becomes ItemsViewController
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
 
 }

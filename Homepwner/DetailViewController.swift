@@ -43,5 +43,20 @@ class DetailViewController: UIViewController {
         dateLabel.text = dateFomatter.stringFromDate(item.dateCreated)
     }
     
+    // call this method when the DetailViewController is about to pop off the stack and transition back to ItemsViewController
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // save changes to item if editing is performed
+        item.name = nameField.text ?? ""
+        item.serialNumber = serialNumberField.text
+        
+        if let valueText = valueField.text, value = numberFormatter.numberFromString(valueText) {
+            item.valueInDollars = value.integerValue
+        } else {
+            item.valueInDollars = 0
+        }
+    }
+    
     
 }
