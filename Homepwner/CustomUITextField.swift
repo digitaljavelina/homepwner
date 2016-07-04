@@ -10,6 +10,8 @@ import UIKit
 
 class CustomUITextField: UITextField {
     
+    // in addition to below, need to change custom class for each textField in Storyboard to CustomUITextField
+    
     override func becomeFirstResponder() -> Bool {
         super.becomeFirstResponder()
         
