@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		990AAED31D2A550C001CAC3F /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990AAED21D2A550C001CAC3F /* CustomUITextField.swift */; };
 		9920F6511D22365400C449C8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9920F6501D22365400C449C8 /* DetailViewController.swift */; };
 		992D58AD1D1BC13400EA7E97 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992D58AC1D1BC13400EA7E97 /* ItemsViewController.swift */; };
 		992D58AF1D1BC19700EA7E97 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992D58AE1D1BC19700EA7E97 /* Item.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		990AAED21D2A550C001CAC3F /* CustomUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		9920F6501D22365400C449C8 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		992D58AC1D1BC13400EA7E97 /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		992D58AE1D1BC19700EA7E97 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 		99F4CC3B1D1B7F27004573AF /* Homepwner */ = {
 			isa = PBXGroup;
 			children = (
+				990AAED21D2A550C001CAC3F /* CustomUITextField.swift */,
 				9920F6501D22365400C449C8 /* DetailViewController.swift */,
 				997BC0921D210EEF00534155 /* ItemCell.swift */,
 				992D58B01D1BC1AF00EA7E97 /* ItemStore.swift */,
@@ -151,6 +154,7 @@
 				992D58AF1D1BC19700EA7E97 /* Item.swift in Sources */,
 				992D58B11D1BC1AF00EA7E97 /* ItemStore.swift in Sources */,
 				9920F6511D22365400C449C8 /* DetailViewController.swift in Sources */,
+				990AAED31D2A550C001CAC3F /* CustomUITextField.swift in Sources */,
 				992D58AD1D1BC13400EA7E97 /* ItemsViewController.swift in Sources */,
 				997BC0931D210EEF00534155 /* ItemCell.swift in Sources */,
 			);
