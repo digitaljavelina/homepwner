@@ -77,4 +77,12 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "changeDate" {
+            let datePickerVC = segue.destinationViewController as! DatePickerViewController
+            datePickerVC.item = item
+            datePickerVC.title = "Enter New Date"
+        }
+    }
+    
 }
