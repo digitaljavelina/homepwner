@@ -15,6 +15,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @IBOutlet var valueField: UITextField!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var deletePhotoButton: UIBarButtonItem!
     
     var item: Item! {
         // change navbar title to item name
@@ -56,6 +57,13 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         // if there is an associated image with the item, display it on the image view
         let imageToDisplay = imageStore.imageForKey(key)
         imageView.image = imageToDisplay
+        
+        // enable delete photo button
+        if imageView.image != nil {
+            deletePhotoButton.enabled = true
+        } else {
+            deletePhotoButton.enabled = false
+        }
     }
     
     // call this method when the DetailViewController is about to pop off the stack and transition back to ItemsViewController
@@ -105,6 +113,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         
         // place the image picker on the screen
         presentViewController(imagePicker, animated: true, completion: nil)
+        
     }
     
     //MARK: - Delegate method
@@ -123,4 +132,11 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         // dismiss image picker - this method MUST be implemented
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func deletePhoto(sender: UIBarButtonItem) {
+        imageStore.deleteImageForKey(item.itemKey)
+        imageView.image = nil
+        deletePhotoButton.enabled = false
+    }
+    
 }
