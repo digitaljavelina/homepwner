@@ -101,6 +101,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         // if the device has a camera, take a picture - otherwise, just pick from photo library
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             imagePicker.sourceType = .Camera
+            
         } else {
             imagePicker.sourceType = .PhotoLibrary
         }
