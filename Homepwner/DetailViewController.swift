@@ -74,7 +74,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         item.name = nameField.text ?? ""
         item.serialNumber = serialNumberField.text
         
-        if let valueText = valueField.text, value = numberFormatter.numberFromString(valueText) {
+        if let valueText = valueField.text, let value = numberFormatter.numberFromString(valueText) {
             item.valueInDollars = value.integerValue
         } else {
             item.valueInDollars = 0
@@ -98,9 +98,17 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @IBAction func takePicture(sender: UIBarButtonItem) {
         let imagePicker = UIImagePickerController()
         
+        // create crosshair overlay
+        let crosshairImage = UIImage(named: "crosshair.png")
+        let crosshairImageView = UIImageView(image: crosshairImage)
+        crosshairImageView.frame = CGRectMake(0, 0, 100, 100)
+        crosshairImageView.center = imagePicker.view.center
+
+        
         // if the device has a camera, take a picture - otherwise, just pick from photo library
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             imagePicker.sourceType = .Camera
+            imagePicker.cameraOverlayView = crosshairImageView
             
         } else {
             imagePicker.sourceType = .PhotoLibrary
